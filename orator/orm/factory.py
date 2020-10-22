@@ -2,7 +2,6 @@
 
 import os
 import inflection
-from faker import Faker
 from functools import wraps
 from .factory_builder import FactoryBuilder
 
@@ -13,11 +12,7 @@ class Factory(object):
         :param faker: A faker generator instance
         :type faker: faker.Generator
         """
-        if faker is None:
-            self._faker = Faker()
-        else:
-            self._faker = faker
-
+        self._faker = faker
         self._definitions = {}
         self._resolver = resolver
 
