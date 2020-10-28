@@ -3,7 +3,7 @@
 import os
 import errno
 import datetime
-
+import uuid
 
 def value(val):
     if callable(val):
@@ -33,5 +33,7 @@ def serialize(value):
     elif isinstance(value, dict):
         for k, v in value.items():
             value[k] = serialize(v)
+    elif isinstance(value, uuid.UUID):
+        value = value.bytes
 
     return value
