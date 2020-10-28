@@ -3,6 +3,7 @@
 import re
 import copy
 import datetime
+import uuid
 
 from itertools import chain
 from collections import OrderedDict
@@ -1551,6 +1552,9 @@ class QueryBuilder(object):
         for value in chain(*self._bindings.values()):
             if isinstance(value, datetime.date):
                 value = value.strftime(self._grammar.get_date_format())
+
+            if isinstance(value, uuid.UUID):
+                value = value.bytes
 
             bindings.append(value)
 
