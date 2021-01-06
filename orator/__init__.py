@@ -1,8 +1,12 @@
 # -*- coding: utf-8 -*-
 
-__version__ = "0.9.9"
+__version__ = "0.10.1"
 
-from .orm import Model, SoftDeletes, Collection, accessor, mutator, scope
+try:
+    from .orm import Model, SoftDeletes, Collection, accessor, mutator, scope
+except ImportError:
+    pass
+
 from .database_manager import DatabaseManager
 from .query.expression import QueryExpression
 from .schema import Schema
