@@ -25,7 +25,7 @@ class SQLiteConnection(Connection):
         return SQLiteSchemaManager(self)
 
     def begin_transaction(self):
-        self._connection.isolation_level = "DEFERRED"
+        self._connection.isolation_level = "IMMEDIATE"
 
         super(SQLiteConnection, self).begin_transaction()
 
